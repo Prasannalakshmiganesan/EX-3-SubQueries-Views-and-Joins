@@ -194,3 +194,7 @@ SELECT * FROM salesman1 RIGHT JOIN customer1 ON salesman1.salesman_id = customer
 
 ## RIGHT JOIN :
 ![image](https://github.com/Prasannalakshmiganesan/EX-3-SubQueries-Views-and-Joins/assets/118610231/d69913e3-3e30-4287-9fa4-0c9e8010a49f)
+
+
+## OUTPUT :
+The outputs are successfully displayed in Oracle.
