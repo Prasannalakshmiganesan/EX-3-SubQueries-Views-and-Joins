@@ -69,45 +69,60 @@ INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (40, 'OPERATIONS', 'BOSTON');
 
 
 ### QUERY:
-
+SELECT ename FROM empl WHERE sal > (SELECT sal FROM empl WHERE empno = 7566);
 
 ### OUTPUT:
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/226b6f5d-933f-4ac6-afa9-ddf1d02e74bf)
 
 ### Q2) List the ename,job,sal of the employee who get minimum salary in the company.
 
 ### QUERY:
-
+SELECT ename, job, sal FROM empl WHERE sal = (SELECT MIN(sal) FROM empl);
 
 ### OUTPUT:
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/59c641ce-93c1-4e31-b6d2-7808e2a91a10)
+
 
 ### Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
 
 ### QUERY:
+SELECT ename, job FROM empl WHERE deptno = 10 AND job IN (SELECT job FROM empl WHERE job = 'sales');
 
 
 ### OUTPUT:
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/eb5fe2fa-e21f-4cde-a228-1bb981f7c460)
+
 
 
 ### Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
 
 ### QUERY:
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/9a07bc39-e155-4815-a726-87cfdeac5851)
 
 
 ### OUTPUT:
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/09b257c5-1e6d-49cf-a501-7d4371db5d2e)
+
 
 ### Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
 
 ### QUERY:
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/737e3963-fe9e-45cf-b01a-917bae4c81e5)
 
 
 ### OUTPUT:
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/6b2693d7-435b-4184-9490-97a5d223672c)
+
 
 ### Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
 
 ### QUERY:
+![270767939-d83bbdcd-83a3-427e-bd2b-e799958b055d](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/5b0717dd-c1fe-4bff-b559-807cc9ba1896)
 
 
 ### OUTPUT:
+![270767871-6941b531-33ed-41dc-b6f4-9e8bcc0dd113](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/b1d30d8a-358f-43df-b2e3-fc2b9db64c30)
+
 
 ## Create a Customer1 Table
 ```sql
@@ -140,28 +155,44 @@ INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5003, 'Lauson
 ### Q7) Write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
 
 ### QUERY:
-
+SELECT salesman1.name AS "Salesman", customer1.cust_name AS "Customer Name", salesman1.city AS "City" from salesman1 INNER JOIN customer1 ON salesman1.city = customer1.city;
 
 ### OUTPUT:
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/05fa7739-e1ce-4470-a152-dfd89bdcd246)
+
 
 ### Q8) Write a SQL query to find salespeople who received commissions of more than 13 percent from the company. Return Customer Name, customer city, Salesman, commission.
 
 
 ### QUERY:
 
+SELECT customer1.cust_name AS "Customer Name", customer1.city AS "Customer City", salesman1.name AS "Salesman", salesman1.commission AS "Commission" FROM salesman1 INNER JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id WHERE salesman1.commission > 0.13;
 
 ### OUTPUT:
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/64850f7b-5f9f-430e-8d57-8eeca6f44f4d)
+
 
 ### Q9) Perform Natural join on both tables
 
 ### QUERY:
-
+select * from customer1 natural join salesman1;
 
 ### OUTPUT:
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/e56fed3d-0e7e-41f0-b1dd-11048c30195a)
+
 
 ### Q10) Perform Left and right join on both tables
 
 ### QUERY:
+## LEFT JOIN :
+SELECT * FROM salesman1 LEFT JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id;
 
+## RIGHT JOIN :
+SELECT * FROM salesman1 RIGHT JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id;
 
 ### OUTPUT:
+## LEFT JOIN :
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/ebce7b32-b7d6-44d2-9315-bb40c8463bd3)
+
+## RIGHT JOIN :
+![image](https://github.com/dineshgl/EX-3-SubQueries-Views-and-Joins/assets/118610231/592112fb-cc89-4a7f-a9c6-49e6509e7bbd)
